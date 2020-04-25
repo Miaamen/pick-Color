@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pick your color</title>
+    <link href="https://fonts.font.im/css?family=Amatic+SC" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" href="css/color-card.css"/>
+    <link rel="stylesheet" href="css/show-color.css"/>
+</head>
+<body>
+    <div id="container">
+        <div id="color-container">
+            <div id="header">
+                <h1>Pick Color</h1>
+            </div>
+            <div id="color-ul-container">
+                <color-ul-5></color-ul-5>
+                <color-ul-5></color-ul-5>
+                <color-ul-5></color-ul-5>
+                <color-ul-5></color-ul-5>
+                <color-ul-4></color-ul-4>
+                <color-ul-4></color-ul-4>
+                <color-ul-4></color-ul-4>
+            </div>
+        </div>
+        <div id="show-container"  v-bind:style="{background:hsla}">
+            <div class="show-text">{{ showText }}</div>
+            <div class="drag-color">
+                <span>H : </span><input class="myRange h" v-on:input="getHVal()" v-on:change="getHVal()" class="size-slider" type="range" min="0" max="360" step="1" value="0"/><span>{{ h }}</span>
+            </div>
+            <div class="drag-color">
+                <span>S : </span><input class="myRange s" v-on:input="getSVal()" v-on:change="getSVal(this.value)" class="size-slider" type="range" min="0" max="100" step="1" value="10"/><span>{{ s }}</span>
+            </div>
+            <div class="drag-color">
+                <span>L : </span><input class="myRange l" v-on:input="getLVal()" v-on:change="getLVal(this.value)" class="size-slider" type="range" min="0" max="100" step="1" value="10"/><span>{{ l }}</span>
+            </div>
+            <div class="drag-color">
+                <span>A : </span><input class="myRange a" v-on:input="getAVal()" v-on:change="getAVal(this.value)" class="size-slider" type="range" min="0" max="1" step="0.01" value="1"/><span>{{ a }}</span>
+            </div>
+            
+            <div class="copy-color copy-hex">{{ hex }}</div>
+            <div class="copy-color copy-rgba">{{ rgba }}</div>
+            <div class="copy-color copy-hsl">{{ hsla }}</div>
+        </div>
+    </div>
+
+    <script type="text/x-template" id="color-ul-5">
+        <div class="ul-container">
+            <ul class="colors">
+                <li class="color-lis"></li>
+                <li class="color-lis"></li>
+                <li class="color-lis"></li>
+                <li class="color-lis" class="active-color"></li>
+                <li class="color-lis"></li>
+            </ul>
+            <div class="text">Pink is here!</div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="color-ul-4">
+        <div class="ul-container">
+            <ul class="colors">
+                <li class="color-lis"></li>
+                <li class="color-lis"></li>
+                <li class="color-lis"></li>
+                <li class="color-lis" class="active-color"></li>
+            </ul>
+            <div class="text">Pink is here!</div>
+        </div>
+    </script>
+    
+    <script src="js/vue-template.js"></script>
+    <script src="js/active.js"></script>
+    <script src="js/copy-text.js"></script>
+    
+</body>
+</html>
