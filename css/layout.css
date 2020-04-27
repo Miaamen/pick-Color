@@ -11,6 +11,7 @@ body{
 
 #color-container{
     width: calc(100% - 300px);
+    min-width: 210px;
     float: left;
 }
 
@@ -22,6 +23,7 @@ body{
     border-bottom: 1px solid #ccc;
     background: #fafafa;
     border-right: 1px solid #ccc;
+    z-index: 5;
 }
 
 #color-container #header h1{
@@ -30,15 +32,40 @@ body{
     width: 300px;
     line-height: 80px;
     margin: 0 20px;
-    font-size: 3em;
+    font-size: 3.5em;
+    font-weight: 900;
     font-family: 'Amatic SC', cursive;
-    color: transparent;
-    background: linear-gradient(to right, #bbded6,#8ac6d1,#a696c8,#d9d9f3,#F8DCDC,#B9EDF8,#FFF5C3);
+    color: #53525d;
+    /*background: #555555;
     background-position: 0 0;
     background-clip: text;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text;*/
     cursor: pointer;
     transition: 3s;
+    position: absolute;
+    z-index: 2;
+}
+
+h1::after{
+    content: 'Pick Color';
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    color: #747171;
+    z-index: -2;
+}
+
+h1::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(-45deg, #fafafa 0%, #fafafa 25%, transparent 25%, transparent 50%, #fafafa 50%, #fafafa 75%, transparent 75%, transparent 100%);
+    /*background-size默认repeat*/
+    background-size: 8px 8px;
+    z-index: -1;
 }
 
 #show-container{

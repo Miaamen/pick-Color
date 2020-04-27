@@ -58,8 +58,9 @@
     font-size: 1.5em;
     font-weight: 700;
     padding-bottom: 20px;
+    color: #53525d;
 }
-
+/*
 li:nth-child(1){
     background-color: #2ecc71;
 }
@@ -79,7 +80,7 @@ li:nth-child(4){
 li:nth-child(5){
     background-color: #D64A4B;
 }
-
+*/
 .active{
     -webkit-transform: scale(1.2) translateY(-10px);
     transform: scale(1.2) translateY(-10px);

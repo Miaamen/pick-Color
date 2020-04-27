@@ -25,7 +25,7 @@
 
 .myRange::-webkit-slider-thumb{
     -webkit-appearance: none;
-    border: 2px dashed #53525d;
+    border: 2px dashed #ccc;
     width: 16px;
     height: 16px;
     border-radius: 8px;

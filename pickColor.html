@@ -14,20 +14,23 @@
     <div id="container">
         <div id="color-container">
             <div id="header">
-                <h1>Pick Color</h1>
+                <h1 data-name="Pick Color">Pick Color</h1>
             </div>
             <div id="color-ul-container">
-                <color-ul-5></color-ul-5>
-                <color-ul-5></color-ul-5>
-                <color-ul-5></color-ul-5>
-                <color-ul-5></color-ul-5>
-                <color-ul-4></color-ul-4>
-                <color-ul-4></color-ul-4>
-                <color-ul-4></color-ul-4>
+                <color-ul-5 text="it is red!" color2="hsl(346, 78%, 81%)" color1="hsl(349, 79%, 87%)" color3="hsl(350, 43%, 50%)" color4="hsl(346, 66%, 58%)" color5="hsl(0,95%,69%)"></color-ul-5>
+                <color-ul-5 text="it is blue!" color1="hsl(203, 60%, 68%)" color2="hsl(189, 49%, 71%)" color3="hsl(203, 67%, 59%)" color4="hsl(188, 57%, 46%)" color5="hsl(188, 76%, 22%)"></color-ul-5>
+                <color-ul-5 text="it is purple!" color1="hsl(273, 39%, 68%)" color2="hsl(293, 30%, 62%)" color3="hsl(277, 31%, 56%)" color4="hsl(249, 35%, 64%)" color5="hsl(253, 21%, 50%)"></color-ul-5>
+                <color-ul-5 text="it is yellow!" color1="hsl(41, 86%, 74%)" color2="hsl(42, 92%, 61%)" color3="hsl(59, 100%, 61%)" color4="hsl(59, 87%, 78%)" color5="hsl(39, 83%, 55%)"></color-ul-5>
+                <color-ul-5 text="it is green!" color1="hsl(95, 56%, 61%)" color2="hsl(88, 27%, 56%)" color3="hsl(68, 36%, 28%)" color4="hsl(125, 65%, 31%)" color5="hsl(70, 17%, 27%)"></color-ul-5>
+                <color-ul-5 text="it is gray!" color1="hsl(0, 0%, 92%)" color2="hsl(0, 0%, 74%)" color3="hsl(0, 0%, 56%)" color4="hsl(0, 0%, 43%)" color5="hsl(0, 0%, 24%)"></color-ul-5>
+                <color-ul-4 text="hello mia"  color1="hsl(7, 9%, 60%)" color2="hsl(260, 4%, 45%)" color3="hsl(24, 49%, 85%)" color4="hsl(10, 67%, 72%)"></color-ul-4>
+                <color-ul-4 text="hello mia"  color1="hsl(193, 59%, 89%)" color2="hsl(93, 53%, 89%)" color3="hsl(62, 89%, 86%)" color4="hsl(0, 74%, 86%)"></color-ul-4>
+                <color-ul-4 text="hello mia"  color1="hsl(76, 72%, 44%)" color2="hsl(96, 7%, 86%)" color3="hsl(76, 39%, 73%)" color4="hsl(73, 52%, 60%)"></color-ul-4>
+                <color-ul-4 text="hello mia"  color1="hsl(224, 47%, 66%)" color2="hsl(341, 100%, 75%)" color3="hsl(83, 22%, 60%)" color4="hsl(23, 26%, 52%)"></color-ul-4>
             </div>
         </div>
-        <div id="show-container"  v-bind:style="{background:hsla}">
-            <div class="show-text">{{ showText }}</div>
+        <div id="show-container"  v-bind:style="{background:hsl}">
+            <div class="show-text">{{ settext }}</div>
             <div class="drag-color">
                 <span>H : </span><input class="myRange h" v-on:input="getHVal()" v-on:change="getHVal()" class="size-slider" type="range" min="0" max="360" step="1" value="0"/><span>{{ h }}</span>
             </div>
@@ -37,38 +40,38 @@
             <div class="drag-color">
                 <span>L : </span><input class="myRange l" v-on:input="getLVal()" v-on:change="getLVal(this.value)" class="size-slider" type="range" min="0" max="100" step="1" value="10"/><span>{{ l }}</span>
             </div>
-            <div class="drag-color">
+            <!--<div class="drag-color">
                 <span>A : </span><input class="myRange a" v-on:input="getAVal()" v-on:change="getAVal(this.value)" class="size-slider" type="range" min="0" max="1" step="0.01" value="1"/><span>{{ a }}</span>
-            </div>
+            </div>-->
             
             <div class="copy-color copy-hex">{{ hex }}</div>
-            <div class="copy-color copy-rgba">{{ rgba }}</div>
-            <div class="copy-color copy-hsl">{{ hsla }}</div>
+            <div class="copy-color copy-rgb">{{ rgb }}</div>
+            <div class="copy-color copy-hsl">{{ hsl }}</div>
         </div>
     </div>
 
     <script type="text/x-template" id="color-ul-5">
         <div class="ul-container">
             <ul class="colors">
-                <li class="color-lis"></li>
-                <li class="color-lis"></li>
-                <li class="color-lis"></li>
-                <li class="color-lis" class="active-color"></li>
-                <li class="color-lis"></li>
+                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1)"></li>
+                <li class="color-lis" v-bind:style="{background:color2}"  @click="changeColor(color2)"></li>
+                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3)"></li>
+                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4)"></li>
+                <li class="color-lis" v-bind:style="{background:color5}" @click="changeColor(color5)"></li>
             </ul>
-            <div class="text">Pink is here!</div>
+            <div class="text">{{ text }}</div>
         </div>
     </script>
 
     <script type="text/x-template" id="color-ul-4">
         <div class="ul-container">
             <ul class="colors">
-                <li class="color-lis"></li>
-                <li class="color-lis"></li>
-                <li class="color-lis"></li>
-                <li class="color-lis" class="active-color"></li>
+                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1)"></li>
+                <li class="color-lis" v-bind:style="{background:color2}" @click="changeColor(color2)"></li>
+                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3)"></li>
+                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4)"></li>
             </ul>
-            <div class="text">Pink is here!</div>
+            <div class="text">{{ text }}</div>
         </div>
     </script>
     
