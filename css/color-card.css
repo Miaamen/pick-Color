@@ -9,8 +9,8 @@
 
 .ul-container{
     min-width: 100px;
-    margin: 20px;
-    padding: 0 40px;
+    margin: 20px 0;
+    padding: 0 10px;
     border-radius: 20px;
     box-shadow: 7px 7px 15px rgba(180, 184, 200, 0.15);
     background: #fafafa;
@@ -21,7 +21,6 @@
     width: 100%;
     line-height: 100px;
     text-align: center;
-    /*border-bottom: 1px solid #ccc;*/
     border-radius: 20px;
     padding: 0;
     margin: 0;

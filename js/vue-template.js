@@ -17,6 +17,8 @@ Vue.component('color-ul-4', {
     props: ['text','color1','color2','color3','color4'],
     methods: {
         changeColor: function(c){
+            console.log(c)
+            vm.hsl = c;
             bus.$emit('color',c);
         }
     }
@@ -126,16 +128,8 @@ var vm = new Vue({
             this.hslToRgb(hsl);
             this.settext = hsl;
         },
-        /*getAVal: function(){
-            var d = (document.getElementsByClassName("a")[0]).value;
-            this.a = d
-            let hsla = "hsla(" + this.h + "," + this.s + "%"  + "," + this.l + "%" + "," + this.a + ")";
-            this.hsla = hsla;
-        }*/
     },
     created(){
-
-
         var that = this;
         bus.$on('color',function(c){
             this.hsl = c;
