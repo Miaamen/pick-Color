@@ -2,7 +2,7 @@ body{
     margin: 0;
     background: #fafafa;
     text-align: center;
-    font-family: 'Amatic SC', cursive;;
+    font-family: 'Amatic SC', cursive;
 }
 
 #container{
@@ -19,12 +19,15 @@ body{
     position: fixed;
     top: 0;
     width: calc(100% - 300px);
+    min-width: 220px;
     height: 80px;
     border-bottom: 1px solid #ccc;
     background: #fafafa;
     border-right: 1px solid #ccc;
     z-index: 5;
 }
+
+
 
 .highlight {
     box-shadow: 0px 20px 20px -20px #c6c1c1;
@@ -34,7 +37,7 @@ body{
 #color-container #header h1{
     text-align: left;
     height: 80px;
-    width: 300px;
+    width: 260px;
     line-height: 80px;
     margin: 0 20px;
     font-size: 3.5em;
@@ -84,5 +87,6 @@ h1::before {
     top: 0;
     right: 0;
     border-left: 1px solid #ccc;
-    
+    background: #fafafa;
+    z-index: 12;
 }

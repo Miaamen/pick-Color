@@ -1,3 +1,15 @@
+.color-msg {
+    text-align: center;
+    font-size: 2em;
+    line-height: 1rem;
+    margin-top: calc(50vh - 2em - 64px);
+    color: var(--color-four);
+}
+
+.show-color{
+    margin-top: calc(60vh - 2.5em - 20px - 300px);
+}
+
 .drag-color{
     width: 100%;
     height: 50px;

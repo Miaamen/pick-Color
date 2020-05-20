@@ -1,29 +1,21 @@
 var bus = new Vue();
-
-
-
-function headerScrollShadow() {
-    var scrollTop = window.pageYOffset;
-    var header = document.getElementsByClassName('header');
-    window.addEventListener('scroll', function() {
-        scrollTop = window.pageYOffset;
-        if (scrollTop >= 20) {
-            header.classList.add('highlight');
-        }
-        if (scrollTop < 20) {
-            header.classList.remove('highlight');
-        }
-    });
-}
+var flag1 = true;
+var flag2 = false;
 
 Vue.component('color-ul-5', {
     template: '#color-ul-5',
     props: ['text','color1','color2','color3','color4','color5'],
     methods: {
-        changeColor: function(c){
-            console.log(c)
+        changeColor: function(c,t){
+            //console.log(c + t)
+            flag1 = false;
+            flag2 = true;
             vm.hsl = c;
+            //console.log(this.props)
             bus.$emit('color',c);
+            bus.$emit('text',t);
+            bus.$emit('flag1',flag1);
+            bus.$emit('flag2',flag2);
         }
     }
 });
@@ -32,10 +24,11 @@ Vue.component('color-ul-4', {
     template: '#color-ul-4',
     props: ['text','color1','color2','color3','color4'],
     methods: {
-        changeColor: function(c){
-            console.log(c)
+        changeColor: function(c,t){
+            //console.log(c,t)
             vm.hsl = c;
             bus.$emit('color',c);
+            bus.$emit('text',t);
         }
     }
 });
@@ -53,7 +46,9 @@ var vm = new Vue({
         hsl: null,
         rgb: null,
         hex: null,
-        settext: null
+        settext: null,
+        flag1: flag1,
+        flag2: flag2
     },
    
     methods: {
@@ -143,7 +138,6 @@ var vm = new Vue({
             let hsl = "hsl(" + this.h + "," + this.s + "%"  + "," + this.l + "%)";
             this.hsl = hsl;
             this.hslToRgb(hsl);
-            this.settext = hsl;
         },
         getSVal: function(){
             console.log('滑动s')
@@ -152,7 +146,6 @@ var vm = new Vue({
             let hsl = "hsl(" + this.h + "," + this.s + "%"  + "," + this.l + "%)";
             this.hsl = hsl;
             this.hslToRgb(hsl);
-            this.settext = hsl;
         },
         getLVal: function(){
             console.log('滑动l')
@@ -161,12 +154,20 @@ var vm = new Vue({
             let hsl = "hsl(" + this.h + "," + this.s + "%"  + "," + this.l + "%)";
             this.hsl = hsl;
             this.hslToRgb(hsl);
-            this.settext = hsl;
         },
     },
     created(){
         var that = this;
         that.headerScrollShadow();
+        bus.$on('text',function(t){
+            that.settext = t;
+        });
+        bus.$on('flag1',function(flag1){
+            that.flag1 = flag1;
+        });
+        bus.$on('flag2',function(flag2){
+            that.flag2 = flag2;
+        });
         bus.$on('color',function(c){
             this.hsl = c;
             that.settext = c;

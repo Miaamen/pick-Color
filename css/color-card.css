@@ -1,5 +1,6 @@
 #color-ul-container{
     width: 100%;
+    min-width: 220px;
     padding-top: 80px;
     display: flex;
     flex-direction: row;

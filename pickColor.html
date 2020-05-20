@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pick your color</title>
     <link href="https://fonts.font.im/css?family=Amatic+SC" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -35,34 +34,38 @@
             </div>
         </div>
         <div id="show-container"  v-bind:style="{background:hsl}">
-            <div class="show-text">{{ settext }}</div>
-            <div class="drag-color">
-                <span>H : </span><input class="myRange h" v-on:input="getHVal()" v-on:change="getHVal()" class="size-slider" type="range" min="0" max="360" step="1" value="0"/><span>{{ h }}</span>
+            <p v-show="flag1" class="color-msg">No color chosen</p>
+            <div v-show="flag2" class="show-color">
+                <div class="show-text">{{ settext }}</div>
+                <!--<div class="drag-color">
+                    <span>H : </span><input class="myRange h" v-on:input="getHVal()" v-on:change="getHVal()" class="size-slider" type="range" min="0" max="360" step="1" value="0"/><span>{{ h }}</span>
+                </div>
+                <div class="drag-color">
+                    <span>S : </span><input class="myRange s" v-on:input="getSVal()" v-on:change="getSVal()" class="size-slider" type="range" min="0" max="100" step="1" value="0"/><span>{{ s }}</span>
+                </div>
+                <div class="drag-color">
+                    <span>L : </span><input class="myRange l" v-on:input="getLVal()" v-on:change="getLVal()" class="size-slider" type="range" min="0" max="100" step="1" value="0"/><span>{{ l }}</span>
+                </div>-->
+                <!--<div class="drag-color">
+                    <span>A : </span><input class="myRange a" v-on:input="getAVal()" v-on:change="getAVal(this.value)" class="size-slider" type="range" min="0" max="1" step="0.01" value="1"/><span>{{ a }}</span>
+                </div>-->
+                
+                <div class="copy-color copy-hex">{{ hex }}</div>
+                <div class="copy-color copy-rgb">{{ rgb }}</div>
+                <div class="copy-color copy-hsl">{{ hsl }}</div>
             </div>
-            <div class="drag-color">
-                <span>S : </span><input class="myRange s" v-on:input="getSVal()" v-on:change="getSVal(this.value)" class="size-slider" type="range" min="0" max="100" step="1" value="10"/><span>{{ s }}</span>
-            </div>
-            <div class="drag-color">
-                <span>L : </span><input class="myRange l" v-on:input="getLVal()" v-on:change="getLVal(this.value)" class="size-slider" type="range" min="0" max="100" step="1" value="10"/><span>{{ l }}</span>
-            </div>
-            <!--<div class="drag-color">
-                <span>A : </span><input class="myRange a" v-on:input="getAVal()" v-on:change="getAVal(this.value)" class="size-slider" type="range" min="0" max="1" step="0.01" value="1"/><span>{{ a }}</span>
-            </div>-->
             
-            <div class="copy-color copy-hex">{{ hex }}</div>
-            <div class="copy-color copy-rgb">{{ rgb }}</div>
-            <div class="copy-color copy-hsl">{{ hsl }}</div>
         </div>
     </div>
 
     <script type="text/x-template" id="color-ul-5">
         <div class="ul-container">
             <ul class="colors">
-                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1)"></li>
-                <li class="color-lis" v-bind:style="{background:color2}"  @click="changeColor(color2)"></li>
-                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3)"></li>
-                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4)"></li>
-                <li class="color-lis" v-bind:style="{background:color5}" @click="changeColor(color5)"></li>
+                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color2}"  @click="changeColor(color2,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color5}" @click="changeColor(color5,text)"></li>
             </ul>
             <div class="text">{{ text }}</div>
         </div>
@@ -71,10 +74,10 @@
     <script type="text/x-template" id="color-ul-4">
         <div class="ul-container">
             <ul class="colors">
-                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1)"></li>
-                <li class="color-lis" v-bind:style="{background:color2}" @click="changeColor(color2)"></li>
-                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3)"></li>
-                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4)"></li>
+                <li class="color-lis" v-bind:style="{background:color1}" @click="changeColor(color1,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color2}" @click="changeColor(color2,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color3}" @click="changeColor(color3,text)"></li>
+                <li class="color-lis" v-bind:style="{background:color4}" @click="changeColor(color4,text)"></li>
             </ul>
             <div class="text">{{ text }}</div>
         </div>
