@@ -26,9 +26,13 @@ Vue.component('color-ul-4', {
     methods: {
         changeColor: function(c,t){
             //console.log(c,t)
+            flag1 = false;
+            flag2 = true;
             vm.hsl = c;
             bus.$emit('color',c);
             bus.$emit('text',t);
+            bus.$emit('flag1',flag1);
+            bus.$emit('flag2',flag2);
         }
     }
 });
