@@ -20,7 +20,7 @@ function debounce(fn) {
     //再点击就是重新计时
     timeout = setTimeout(() => {
       fn.call(this, arguments);
-    }, 300);
+    }, 500);
   };
 }
 
@@ -29,10 +29,17 @@ function sayDebounce(){
   var pickColor = this.innerHTML;
   copyToClipboard(pickColor);
   this.innerHTML = "copied!"
+  this.classList.add('no-click')
   var time = 0;
-  setInterval(() => {
+  setTimeout(() => {
     this.innerHTML = pickColor;
+    // this.setAttribute('disabled')
+    console.log(this)
+    console.log('copied!')
+    this.classList.remove('no-click')
   },2000);
+  // this.removeAttribute('disabled')
+  console.log('copy!')
 }
 
 function copyToClipboard(text) {

@@ -66,3 +66,7 @@
     padding-bottom: 20px;
     color: #53525d;
 }
+
+.no-click{
+    pointer-events: none;
+}
